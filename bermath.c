@@ -35,7 +35,11 @@ static inline int branchless_min(int n, int m) {
 
 inline int branchless_abs(int n) {
   // Works because for negative numbers left-shift fills with ones
-  return (n ^ (n >> 31)) - (n >> 31);
+  return (n ^ (n >> (sizeof(int) - 1))) - (n >> (sizeof(int) - 1));
+}
+
+inline int branchless_shiftless_abs(int n) {
+  return (n ^ sign_extend(n) - sign_extend(n));
 }
 
 inline int mod_2n(int m, int exp) {

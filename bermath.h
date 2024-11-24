@@ -38,6 +38,7 @@ static inline int is_power_2(int n);
 static inline int branchless_max(int n, int m);
 static inline int branchless_min(int n, int m);
 static inline int branchless_abs(int n);
+static inline int branchless_shiftless_abs(int n);
 
 static inline int mod_2n(int m, int exp);
 
