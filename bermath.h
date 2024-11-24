@@ -1,8 +1,9 @@
 #ifndef BERTO_LIB_MATH_LIBRARY_HEADER_ONLY
 #define BERTO_LIB_MATH_LIBRARY_HEADER_ONLY
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+// typedef unsigned long long uint64_t;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,7 +24,8 @@ static inline long double mod_ld(long double n, long double m);
 
 // Bitwise operations
 
-static inline int popcount(int n);
+static inline int popcount64(uint64_t n);
+static inline int popcount32(uint32_t n);
 static inline int clz(int n);
 static inline int ctz(int n);
 static inline int next_power_2(int n);
@@ -33,6 +35,8 @@ static inline int is_power_2(int n);
 static inline int branchless_max(int n, int m);
 static inline int branchless_min(int n, int m);
 static inline int branchless_abs(int n);
+
+static inline int mod_2n(int m, int exp);
 
 static inline int mask_allones(int n);
 static inline int mask_rightNbits(int n);
