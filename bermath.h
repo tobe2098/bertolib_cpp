@@ -1,5 +1,5 @@
-#ifndef BERTO_LIB_MATH_LIBRARY_HEADER_ONLY
-#define BERTO_LIB_MATH_LIBRARY_HEADER_ONLY
+#ifndef BERTO_LIB_MATH_LIBRARY_HEADER
+#define BERTO_LIB_MATH_LIBRARY_HEADER
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

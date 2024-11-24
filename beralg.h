@@ -1,0 +1,6 @@
+#ifndef BERTOLIB_ALGORTHM_LIBRARY_HEADER
+#define BERTOLIB_ALGORTHM_LIBRARY_HEADER
+
+// Sorting algorithms.
+
+#endif
