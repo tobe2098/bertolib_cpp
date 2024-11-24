@@ -1,5 +1,25 @@
 #include "bermath.h"
 
+static inline uint32_t sign_extend(int32_t x) {
+  union {
+      // let us suppose long is twice as wide as int
+      int64_t w;
+
+      // should be hi,lo on a big endian machine
+      struct {
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+          int32_t lo, hi;
+#elif defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+          int32_t hi, lo;
+#else
+#error "Endianess problem"
+#endif
+      };
+  } z = { .w = x };
+
+  return (uint32_t)z.hi;
+}
+
 // Define the mod function
 static inline int mod_i(int n, int m) {
   int r = n % m;
@@ -25,6 +45,11 @@ inline int mod_2n(int m, int exp) {
 static inline void invalid_generic(const char* str) {
   fprintf(stderr, str);
   abort();
+}
+
+inline int branchless_mod(int n, int m) {
+  int r = n - (n / m) * m;  // Compute remainder
+  return r + (r < 0) * m;   // Add m if remainder is negative
 }
 
 inline int popcount64(uint64_t n) {

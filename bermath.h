@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "berendian.h"
 // typedef unsigned long long uint64_t;
 #ifdef __cplusplus
 extern "C" {
@@ -22,6 +23,8 @@ static inline float       mod_f(float n, float m);
 static inline double      mod_d(double n, double m);
 static inline long double mod_ld(long double n, long double m);
 
+static inline int      branchless_mod(int n, int m);
+static inline uint32_t sign_extend(int32_t x);  // Returns all 1s if sign bit is SET
 // Bitwise operations
 
 static inline int popcount64(uint64_t n);
