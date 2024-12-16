@@ -97,6 +97,14 @@ inline int popcount32(uint32_t n) {
   // Here we unroll all the 8-bit sets and add them together in the most significant 8 bits. Then we lower them to the least significant 8
   // bits.
   return n;
+#elif defined(_FOR_PROFILING)
+  // Examine the logic too
+  n = (n & 0x55555555u) + ((n >> 1) & 0x55555555u);
+  n = (n & 0x33333333u) + ((n >> 2) & 0x33333333u);
+  n = (n & 0x0f0f0f0fu) + ((n >> 4) & 0x0f0f0f0fu);
+  n = (n & 0x00ff00ffu) + ((n >> 8) & 0x00ff00ffu);
+  n = (n & 0x0000ffffu) + ((n >> 16) & 0x0000ffffu);
+  return n;
 #else
   n = n - ((n >> 1) & 0x55555555);
   n = (n & 0x33333333) + ((n >> 2) & 0x33333333);
