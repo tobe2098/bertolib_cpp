@@ -8,5 +8,6 @@
 // double-linked-list
 // Binary search tree
 // Red-black tree
+// Radix tree template
 
 #endif
